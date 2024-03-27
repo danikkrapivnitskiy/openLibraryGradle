@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0.0'
+description 'Automation testing project'
+
+sourceCompatibility = 17
+targetCompatibility = 17
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://packages.confluent.io/maven/'
+    }
+}
+
+apply plugin: 'java'
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+dependencies {
+    implementation 'io.cucumber:cucumber-java:7.0.0'
+    implementation 'org.testng:testng:7.8.0'
+    implementation 'io.cucumber:cucumber-core:7.0.0'
+    implementation 'io.cucumber:cucumber-testng:7.15.0'
+    implementation 'io.cucumber:gherkin:22.0.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.17.0'
+    implementation 'org.seleniumhq.selenium:selenium-remote-driver:4.17.0'
+    implementation 'org.seleniumhq.selenium:selenium-api:4.17.0'
+    implementation 'org.seleniumhq.selenium:selenium-chrome-driver:4.17.0'
+    implementation 'org.seleniumhq.selenium:selenium-chromium-driver:4.17.0'
+    implementation 'io.rest-assured:rest-assured:5.3.0'
+    compileOnly 'org.projectlombok:lombok:1.18.32'
+    annotationProcessor 'org.projectlombok:lombok:1.18.32'
+    testCompileOnly 'org.projectlombok:lombok:1.18.32'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
+}
+
+clean {
+    dependsOn 'autoClean'
+}
